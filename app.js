@@ -40,6 +40,10 @@ app.listen(port, () => {
 // Route for GET requests
 // This function is used to verify the webhook from the third party
 app.get('/', (req, res) => {
+
+  //this part of the code purely specific depending on the third party
+  //the variables that are being sent in the payload, in this example we took 
+  //verfiy_token as the only variable that needs to be validated like in the case of Meta' API
   const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.verify_token': token } = req.query;
 
   if (mode === 'subscribe' && token === verifyToken) {
